@@ -1,20 +1,26 @@
 {
-  "name": "homebridge-mqttScene",
-  "version": "0.0.1",
-  "description": "MQTT scene contorl plugin for homebridge: https://github.com/nfarina/homebridge",
-  "license": "Apache License V2.0",
+  "name": "homebridge-mqttscene",
+  "version": "1.0.0",
+  "description": "MQTT scene contorl plugin for homebridge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AIIenGY/homebridge-mqttScene.git"
+  },
   "keywords": [
     "homebridge-plugin",
     "homekit",
     "smartHome"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/example/homebridge.git"
-  },
+  "author": "AIIenGY",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "http://github.com/example/homebridge/issues"
+    "url": "https://github.com/AIIenGY/homebridge-mqttScene/issues"
   },
+  "homepage": "https://github.com/AIIenGY/homebridge-mqttScene#readme",
   "engines": {
     "node": ">=0.12.0",
     "homebridge": ">=0.2.0"

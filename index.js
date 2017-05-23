@@ -21,7 +21,7 @@ function MqttSceneAccessory(log, config) {
     this.publish_options = {
         qos: ((config["qos"] !== undefined)? config["qos"]: 1)
     };
-    this.client_Id = "MqttScene" + Math.random().toString(16).substr(2, 6);
+    this.client_Id = "MqttScene_" + Math.random().toString(16).substr(2, 6);
     this.options = {
         keepalive: 10,
         clientId: this.client_Id,
@@ -59,16 +59,17 @@ function MqttSceneAccessory(log, config) {
     })
 
     this.client.on('message', function (topic, message) {
-        console.log(topic +":" + message.toString()+".");
+        //console.log(topic +":" + message.toString()+".");
          
         var response = message.toString();
         if(response) {
             try {
                 var jsonObj = JSON.parse(response);
-                //console.log(jsonObj.message);
 
                 if(jsonObj.message === "scene active response" )
                 {
+                    console.log(response);
+
                     if(jsonObj.id != that.sceneID)
                     {
                         return;
@@ -76,7 +77,7 @@ function MqttSceneAccessory(log, config) {
                     
                     if(jsonObj.code != 0)
                     {                
-                        console.log("scene active failed, sceneid:"+jsonObj.id+"info:"+jsonObj.info);
+                        console.log("scene active failed, sceneid:" + jsonObj.id + ", info:" + jsonObj.info);
                     }
                     
                     that.service.getCharacteristic(Characteristic.On).setValue(false, undefined, 'fromSetValue');
